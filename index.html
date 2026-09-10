@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Radha AI Chatbot</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .chatbot {
+            width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .header p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .chat-area {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        .bot {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .user {
+            background: #2563eb;
+            color: white;
+            margin-left: auto;
+        }
+
+        .input-area {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            gap: 10px;
+        }
+
+        .input-area input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .input-area button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        .input-area button:hover {
+            background: #1d4ed8;
+        }
+        body {
+    background: linear-gradient(135deg, #dbeafe, #f0f9ff);
+}
+
+.chatbot {
+    width: 420px;
+    height: 650px;
+    border-radius: 24px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
+}
+
+.header {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    padding: 24px;
+}
+
+.header h1 {
+    font-size: 26px;
+}
+
+.header p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.chat-area {
+    background: #f8fafc;
+    padding: 20px;
+}
+
+.message {
+    padding: 13px 16px;
+    border-radius: 18px;
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.input-area {
+    background: white;
+    padding: 16px;
+}
+
+.input-area input {
+    padding: 13px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.input-area button {
+    padding: 13px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.input-area button:hover {
+    transform: scale(1.03);
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="chatbot">
+
+        <div class="header">
+            <h1>Radha AI Chatbot</h1>
+            <p>Your virtual assistant</p>
+        </div>
+
+        <div class="chat-area" id="chatArea">
+
+            <div class="message bot">
+                Hello! 👋 How can I help you today?
+            </div>
+
+        </div>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Type your message..."
+            >
+
+            <button onclick="sendMessage()">Send</button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function sendMessage() {
+
+            let input = document.getElementById("userInput");
+            let message = input.value.trim();
+
+            if (message === "") {
+                return;
+            }
+
+            let chatArea = document.getElementById("chatArea");
+
+            // Display user message
+            let userMessage = document.createElement("div");
+            userMessage.className = "message user";
+            userMessage.textContent = message;
+
+            chatArea.appendChild(userMessage);
+
+            // Create bot response
+            let botMessage = document.createElement("div");
+            botMessage.className = "message bot";
+
+            botMessage.textContent = getBotResponse(message);
+
+            chatArea.appendChild(botMessage);
+
+            // Clear input
+            input.value = "";
+
+            // Scroll to latest message
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+
+        function getBotResponse(message) {
+
+            message = message.toLowerCase();
+
+            if (message.includes("hello") || message.includes("hi")) {
+                return "Hello! 👋 Nice to meet you!";
+            }
+
+            if (message.includes("how are you")) {
+    return "I'm doing great! 😊 How can I help you?";
+}
+
+if (message.includes("your name")) {
+    return "My name is Radha AI Chatbot.";
+}
+
+if (message.includes("bye")) {
+    return "Goodbye! 👋 Have a great day!";
+}
+
+if (message.includes("help")) {
+    return "Sure! You can ask me about my name, greetings, or general questions.";
+}
+
+if (message.includes("what can you do")) {
+    return "I can answer common questions and provide basic information. 😊";
+}
+
+if (message.includes("who created you")) {
+    return "I was created by Janani Sri , a intern in CodeAlpha chatbot project. 🤖";
+}
+
+if (message.includes("thank you") || message.includes("thanks")) {
+    return "You're welcome! 😊";
+}
+
+if (message.includes("good morning")) {
+    return "Good morning! ☀️ How can I help you today?";
+}
+
+if (message.includes("good evening")) {
+    return "Good evening! 🌙 How can I help you?";
+}
+
+if (message.includes("good night")) {
+    return "Good night! 🌟 Have a great rest!";
+}
+
+if (message.includes("what is ai")) {
+    return "AI stands for Artificial Intelligence. It enables computers to perform tasks that normally require human intelligence.";
+}
+
+if (message.includes("what is cloud computing")) {
+    return "Cloud computing provides computing resources such as storage, servers and applications over the internet.";
+}
+
+if (message.includes("how can you help")) {
+    return "I can answer common questions and provide basic information instantly. 🤖";
+}
+
+if (message.includes("are you ai")) {
+    return "Yes! I am Radha AI Chatbot, created as a CodeAlpha internship project. 🤖";
+}
+
+return "Sorry, I don't understand that yet. Please try another question.";
+}
+
+</script>
+
+</body>
+
+</html>
