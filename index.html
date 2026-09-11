@@ -215,11 +215,12 @@
             // Create bot response
             let botMessage = document.createElement("div");
             botMessage.className = "message bot";
-
-            botMessage.textContent = getBotResponse(message);
-
+            botMessage.textContent = "Radha AI is typing... 🤖";
             chatArea.appendChild(botMessage);
 
+            setTimeout(function() {
+            botMessage.textContent = getBotResponse(message);
+            }, 1000);
             // Clear input
             input.value = "";
 
